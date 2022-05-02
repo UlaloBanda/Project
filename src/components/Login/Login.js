@@ -1,6 +1,5 @@
 import React from 'react';
 import { Navbar } from 'react-bootstrap';
-import logo from '/home/ulalo/project/src/assests/sslogo.png';
 import './forms.css';
 import { Form, Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';

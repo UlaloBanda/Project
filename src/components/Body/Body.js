@@ -2,8 +2,8 @@ import React from 'react'
 import './Body.css';
 import { Button } from 'react-bootstrap';
 import { Card } from 'react-bootstrap';
-import lecturelogo from '/home/ulalo/project/src/assests/12352373.jpg';
-import { Link, useNavigate } from "react-router-dom";
+import lecturelogo from '../../assests/12352373.jpg';
+import { Link} from "react-router-dom";
 
 
 function Body() {
