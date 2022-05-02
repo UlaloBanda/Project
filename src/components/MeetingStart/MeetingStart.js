@@ -10,7 +10,7 @@ import React, { useRef, useState, useEffect} from 'react';
 
 const MeetingStart = () => {
   
-  const [sname] =  'https://jitsi.inscriptionsmw.com/'
+  const servername =  'jitsi.inscriptionsmw.com'
   const [room, setRoom] = useState('')
   const [name, setName] = useState('')
   const [call, setCall] = useState(false)
@@ -34,7 +34,7 @@ const MeetingStart = () => {
   return call ? (
 
     <JitsiMeeting
-    
+    domain= {servername}
     roomName = {room}   
     getIFrameRef = { handleJitsiIFrameRef }
   />
