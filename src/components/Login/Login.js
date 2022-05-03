@@ -24,10 +24,11 @@ function Login(){
         .then(() => {
           setTimeActive(true)
           navigate('/verify-email')
+          
         })
       .catch(err => alert(err.message))
     }else{
-      navigate('/')
+      navigate('/meeting')
     }
     })
     .catch(err => setError(err.message))
@@ -53,9 +54,8 @@ function Login(){
             placeholder='Enter your password'
             onChange={e => setPassword(e.target.value)}/>
 
-          <Link to='/meeting'>
           <button type='submit'>Login</button>
-          </Link>
+      
           
         </form>
         <p>
