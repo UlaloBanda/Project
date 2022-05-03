@@ -2,7 +2,10 @@ import React from 'react';
 import logo from '../../assests/sslogo.png';
 
 import './Header.css';
-
+/**
+ * 
+ * @returns img  for icon header
+ */
 function Header() {
   return (
     <div className='header'>

@@ -5,6 +5,11 @@ import {useNavigate, Link} from 'react-router-dom'
 import {createUserWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
 import {useAuthValue} from './AuthContext'
 
+/**
+ * 
+ * @returns View for new user to register
+ */
+
 function Register() {
 
   const [email, setEmail] = useState('')

@@ -16,7 +16,10 @@ import {onAuthStateChanged} from 'firebase/auth'
 import PrivateRoute from './components/Login/PrivateRoute'
 
 
-
+/**
+ * 
+ * @returns View that holds all rendered components 
+ */
 function App() { 
 
 

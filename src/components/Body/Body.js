@@ -5,6 +5,10 @@ import { Card } from 'react-bootstrap';
 import lecturelogo from '../../assests/12352373.jpg';
 import { Link} from "react-router-dom";
 
+/**
+ * 
+ * @returns Landing page view for Lecture and Student
+ */
 
 function Body() {
 

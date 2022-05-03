@@ -5,6 +5,10 @@ import {auth} from './firebase'
 import {sendEmailVerification} from 'firebase/auth'
 import {useNavigate} from 'react-router-dom'
 
+/**
+ * 
+ * @returns Email verification view 
+ */
 function VerifyEmail() {
 
   const {currentUser} = useAuthValue()

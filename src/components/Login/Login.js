@@ -6,7 +6,10 @@ import {auth} from './firebase'
 import {useNavigate} from 'react-router-dom'
 import {useAuthValue} from './AuthContext'
 
-
+/**
+ * 
+ * @returns Login form view  for authenticated user to login and proceed to meeting
+ */
 function Login(){
 
   const [email, setEmail] = useState('')
