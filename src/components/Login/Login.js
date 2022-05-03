@@ -1,50 +1,70 @@
-import React from 'react';
-import { Navbar } from 'react-bootstrap';
-import './forms.css';
-import { Form, Button} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import {useState} from 'react'
+import { Link } from 'react-router-dom'
+import './forms.css'
+import {signInWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
+import {auth} from './firebase'
+import {useNavigate} from 'react-router-dom'
+import {useAuthValue} from './AuthContext'
 
 
-function Login() {
+function Login(){
 
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('') 
+  const [error, setError] = useState('')
+  const {setTimeActive} = useAuthValue()
+  const navigate = useNavigate()
 
+  const login = e => {
+    e.preventDefault()
+    signInWithEmailAndPassword(auth, email, password)
+    .then(() => {
+      if(!auth.currentUser.emailVerified) {
+        sendEmailVerification(auth.currentUser)
+        .then(() => {
+          setTimeActive(true)
+          navigate('/verify-email')
+        })
+      .catch(err => alert(err.message))
+    }else{
+      navigate('/')
+    }
+    })
+    .catch(err => setError(err.message))
+  }
 
-  return (
+  return(
     <div className='center'>
       <div className='auth'>
         <h1>Log in</h1>
-        
-        <Form>
-  <Form.Group className="sm-3" controlId="formBasicEmail">
-    <Form.Label>Email address</Form.Label>
-    <Form.Control type="email" placeholder="Enter email" />
-    <Form.Text className="text-muted">
-      We'll never share your email with anyone else.
-    </Form.Text>
-  </Form.Group>
+        {error && <div className='auth__error'>{error}</div>}
+        <form onSubmit={login} name='login_form'>
+          <input 
+            type='email' 
+            value={email}
+            required
+            placeholder="Enter your email"
+            onChange={e => setEmail(e.target.value)}/>
 
-  <Form.Group className="mb-3" controlId="formBasicPassword">
-    <Form.Label>Password</Form.Label>
-    <Form.Control type="password" placeholder="Password" />
-  </Form.Group>
-  <Form.Group className="mb-3" controlId="formBasicCheckbox">
-    <Form.Check type="checkbox" label="Check me out" />
-  </Form.Group>
-  <Link to='/meeting'>
-  <Button variant="primary" type="submit">
-    Submit
-  </Button>
+          <input 
+            type='password'
+            value={password}
+            required
+            placeholder='Enter your password'
+            onChange={e => setPassword(e.target.value)}/>
 
-  </Link>
-  
-</Form>
-
+          <Link to='/meeting'>
+          <button type='submit'>Login</button>
+          </Link>
+          
+        </form>
         <p>
           Don't have and account? 
+          <Link to='/register'>Create one here</Link>
         </p>
       </div>
     </div>
-  );
-
+  )
 }
+
 export default Login;

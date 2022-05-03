@@ -23,7 +23,7 @@ function Body() {
                 Login as a lecture.
              </Card.Text>
 
-             <Link to='/login'>
+             <Link to='/loginview'>
              <Button variant="primary">Proceed</Button>
 
              </Link>
